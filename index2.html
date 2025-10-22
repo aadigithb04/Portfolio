@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aditya Lokhande — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg1:#0f172a;
+      --bg2:#020617;
+      --glass:rgba(255,255,255,0.04);
+      --accent:#38bdf8;
+      --muted:#94a3b8;
+      --card-border: rgba(255,255,255,0.04);
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Poppins',sans-serif;
+      background:radial-gradient(circle at top left,var(--bg1),var(--bg2));
+      color:#fbfdff; line-height:1.6; overflow-x:hidden; scroll-behavior:smooth;
+    }
+    nav {
+      position:fixed; top:0; left:0; right:0;
+      display:flex; justify-content:center; gap:2rem;
+      padding:0.9rem;
+      background:rgba(15,23,42,0.75); backdrop-filter:blur(8px); z-index:40;
+    }
+    nav a { color:var(--muted); text-decoration:none; font-weight:600; }
+    nav a:hover { color:var(--accent); }
+    header {
+      min-height:80vh; display:flex; align-items:center; justify-content:center;
+      padding:3rem 1rem; flex-direction:column; text-align:center;
+      background:linear-gradient(145deg,var(--bg1) 0%,#121827 100%);
+    }
+    .hero-card {
+      width:360px; max-width:90%;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+      border-radius:14px; padding:28px;
+      border:1px solid var(--card-border);
+      box-shadow:0 20px 40px rgba(2,6,23,0.6);
+      backdrop-filter:blur(8px);
+    }
+    h1 {
+      font-size:2.4rem;
+      background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+      -webkit-background-clip:text;
+      color:transparent;
+      text-shadow:0 0 12px rgba(139,92,246,0.45);
+    }
+    p.lead { color:var(--muted); margin-top:6px; }
+    .tagline { font-size:0.95rem; color:var(--muted); margin-top:4px; }
+    .socials { margin-top:12px; display:flex; gap:14px; justify-content:center; }
+    .socials a { color:var(--accent); font-size:1.25rem; transition:transform .18s; }
+    .socials a:hover { transform:scale(1.12); color:#8b5cf6; }
+    main { max-width:1000px; margin:2.2rem auto; padding:0 18px; }
+    section {
+      margin:2rem 0; padding:1.6rem;
+      border-radius:12px; background:var(--glass);
+      backdrop-filter:blur(6px);
+      box-shadow:0 12px 30px rgba(2,6,23,0.6);
+      opacity:0; transform:translateY(28px);
+      transition:all .7s ease;
+    }
+    section.show { opacity:1; transform:translateY(0); }
+    h2 {
+      color:var(--accent);
+      display:inline-block;
+      padding-bottom:6px;
+      border-bottom:2px solid rgba(56,189,248,0.12);
+      margin-bottom:10px;
+    }
+    ul.skills { list-style:none; columns:2; column-gap:40px; margin-top:6px; color:var(--muted); }
+    .card {
+      background:rgba(255,255,255,0.02);
+      padding:12px; border-radius:10px; margin-bottom:12px;
+      border:1px solid var(--card-border);
+      transition:transform 0.2s ease;
+    }
+    .card:hover { transform:scale(1.01); }
+    .clickable {
+      cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+      padding:6px 0; transition:all 0.3s ease;
+    }
+    .clickable strong { font-size:1rem; color:var(--accent); transition:all 0.3s ease; }
+    .clickable small { font-size:0.85rem; color:var(--muted); display:block; opacity:0.85; margin-top:2px; }
+    .arrow { transition:transform 0.3s ease; font-size:1.1rem; color:var(--muted); margin-left:10px; }
+    .arrow.rotate { transform:rotate(90deg); color:var(--accent); }
+    .details {
+      overflow:hidden; max-height:0; opacity:0; transform:translateY(-8px);
+      transition:max-height 0.3s ease,opacity 0.3s ease,transform 0.3s ease;
+      color:var(--muted); margin-top:10px; font-size:0.95rem; line-height:1.6;
+    }
+    .details.open { opacity:1; transform:translateY(0); max-height:1000px; padding-top:4px; }
+    a.cert-link {
+      color:var(--accent); text-decoration:none; font-weight:600;
+      display:flex; align-items:center; gap:8px;
+    }
+    a.cert-link:hover { text-decoration:underline; color:#8b5cf6; }
+    a.cert-link::before { content:"📜"; font-size:1.1rem; }
+    footer { text-align:center; padding:1rem; margin-top:1.5rem; color:var(--muted); font-size:0.95rem; }
+    @media (max-width:720px) { ul.skills { columns:1; } h1 { font-size:1.8rem; } .hero-card { width:92%; } }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#certs">Certificates</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <div class="hero-card">
+      <h1>Aditya Haribhau Lokhande</h1>
+      <p class="lead">Full-Stack Developer | B.Tech (ENTC) | IoT & Signal Processing Enthusiast</p>
+      <p class="tagline">Building efficient web platforms and intelligent embedded systems.</p>
+      <div class="socials">
+        <a href="https://github.com/aadigithb04" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/aditya-lokhande-b32062370" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="show">
+      <h2>About Me</h2>
+      <p style="margin-top:8px;color:var(--muted)">
+        I'm <strong>Aditya Haribhau Lokhande</strong>, a B.Tech student at Pimpri Chinchwad College of Engineering, Pune.
+        I build full-stack web platforms and work on IoT & signal processing systems — focusing on performance,
+        maintainable code, and clean UI.
+      </p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p style="margin-top:8px;color:var(--muted)">
+        <strong>Pimpri Chinchwad College Of Engineering, Pune</strong><br>
+        B.Tech in Electronics & Telecommunication Engineering — <em>Sept 2024 - June 2027</em>
+      </p>
+      <p style="margin-top:8px;color:var(--muted)">
+        <strong>Army Public School, Ahilya Nagar</strong><br>
+        10th — <em>91.2%</em>
+      </p>
+      <p style="margin-top:8px;color:var(--muted)">
+        <strong>Trimurti Pawan Pratishthan</strong><br>
+        12th — <em>81.16%</em>
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills Summary</h2>
+      <ul class="skills">
+        <li><strong>Languages:</strong> C, C++, Java, Python, JavaScript, SQL, MATLAB</li>
+        <li><strong>Frameworks & Tools:</strong> React.js, Node.js, Express.js, MongoDB, Redux Toolkit, Tailwind CSS</li>
+        <li><strong>ENTC & IoT:</strong> Embedded Systems (Arduino, ESP32), IoT Devices, Signal Processing, Sensors & Data Acquisition</li>
+        <li><strong>Design Tools:</strong> Multisim, Proteus, PCB Design, RF fundamentals</li>
+        <li><strong>Soft Skills:</strong> Leadership, Public Speaking, Team Collaboration</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Work Experience</h2>
+
+      <div class="card">
+        <div class="clickable" data-target="exp-rk">
+          <div>
+            <strong>Intern – Web Developer | RK Industries</strong>
+            <small>Developed internal web dashboards and optimized database access workflows.</small>
+          </div>
+          <span class="arrow">▸</span>
+        </div>
+        <div id="exp-rk" class="details">
+          <ul>
+            <li>Built internal tools using HTML, CSS, JavaScript, Node.js, and MongoDB.</li>
+            <li>Improved UI responsiveness and integrated APIs for process automation.</li>
+            <li>Enhanced database performance by optimizing queries and indexing.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="clickable" data-target="exp-indus">
+          <div>
+            <strong>Telecommunication Intern — Indus Towers Limited</strong> <em>(June 2025 — Ahilyanagar Regional Sites)</em>
+            <small>Maintained telecom tower sites, optimized RF parameters, and implemented IoT-based monitoring.</small>
+          </div>
+          <span class="arrow">▸</span>
+        </div>
+        <div id="exp-indus" class="details">
+          <ul>
+            <li>Performed preventive maintenance of BTS, power modules, and RF systems.</li>
+            <li>Analyzed signal strength (RSSI, RSRP, RSRQ) for coverage optimization.</li>
+            <li>Developed ESP32-based IoT monitoring for power and temperature sensors.</li>
+            <li>Documented daily site performance reports for audit and compliance.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="card">
+        <div class="clickable" data-target="proj-codecamp">
+          <div>
+            <strong>CodeCamp</strong>
+            <small>Interactive full-stack coding platform with problem-solving, submission tracking & role-based access.</small>
+          </div>
+          <span class="arrow">▸</span>
+        </div>
+        <div id="proj-codecamp" class="details">
+          <ul>
+            <li>Built authentication (JWT + cookies) and role-based access for users and admins.</li>
+            <li>Implemented Judge0 API for real-time multi-language code execution.</li>
+            <li>Developed problem management CRUD and submission tracking dashboard using React + Tailwind.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="clickable" data-target="proj-rent">
+          <div>
+            <strong>Rent a Ride</strong>
+            <small>Full-stack car rental system with User, Vendor & Admin modules.</small>
+          </div>
+          <span class="arrow">▸</span>
+        </div>
+        <div id="proj-rent" class="details">
+          <ul>
+            <li>JWT authentication with refresh tokens & secure role-based access.</li>
+            <li>Developed modules for booking, browsing, and email notifications.</li>
+            <li>Added dynamic search, sorting, and filtering with React Hook Form & Zod validation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="clickable" data-target="proj-blog">
+          <div>
+            <strong>Blogify</strong>
+            <small>Responsive MERN-based blogging app with authentication & real-time editing.</small>
+          </div>
+          <span class="arrow">▸</span>
+        </div>
+        <div id="proj-blog" class="details">
+          <ul>
+            <li>Implemented CRUD operations, markdown rendering, and comment system.</li>
+            <li>Added JWT login and secure backend routes for user data management.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="clickable" data-target="proj-emotion">
+          <div>
+            <strong>Emotion Recognition from Speech</strong>
+            <small>MATLAB-based system using FFT & ML to identify emotions from voice data.</small>
+          </div>
+          <span class="arrow">▸</span>
+        </div>
+        <div id="proj-emotion" class="details">
+          <ul>
+            <li>Applied FFT and MFCC feature extraction with DSP filtering.</li>
+            <li>Trained ML classifiers for emotion detection across datasets.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="certs">
+      <h2>Certificates</h2>
+      <div class="card"><a class="cert-link" href="core-java-cert.jpg" target="_blank">Core JAVA Bootcamp — Udemy</a></div>
+      <div class="card"><a class="cert-link" href="javascript-cert.jpg" target="_blank">The Complete JavaScript Course — Udemy</a></div>
+      <div class="card"><a class="cert-link" href="webdev-cert.jpg" target="_blank">Web Development Bootcamp — Udemy</a></div>
+      <div class="card"><a class="cert-link" href="frontend-cert.jpg" target="_blank">Front End Development — Simplilearn</a></div>
+      <div class="card"><a class="cert-link" href="python-cert.jpg" target="_blank">Python Programming — Udemy</a></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p style="color:var(--muted)">📍 <strong>Location:</strong> PCCOE, Sector - 26, Pradhikaran, Nigdi, near Akurdi Railway Station, Pune - 411 044</p>
+      <p style="color:var(--muted)">📧 Email: <a href="mailto:adityalokhandejee2023@gmail.com" style="color:var(--accent)">adityalokhandejee2023@gmail.com</a></p>
+      <p style="color:var(--muted)">💻 GitHub: <a href="https://github.com/aadigithb04" target="_blank" style="color:var(--accent)">github.com/aadigithb04</a></p>
+      <p style="color:var(--muted)">🔗 LinkedIn: <a href="https://www.linkedin.com/in/aditya-lokhande-b32062370" target="_blank" style="color:var(--accent)">linkedin.com/in/aditya-lokhande-b32062370</a></p>
+    </section>
+  </main>
+
+  <footer>© 2025 Aditya Lokhande • Built with ❤️</footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const reveal = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(s => {
+        const top = s.getBoundingClientRect().top;
+        if (top < trigger) s.classList.add('show');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    document.querySelectorAll('[data-target]').forEach(node => {
+      node.addEventListener('click', () => {
+        const target = document.getElementById(node.dataset.target);
+        const arrow = node.querySelector('.arrow');
+        if (target) target.classList.toggle('open');
+        if (arrow) arrow.classList.toggle('rotate');
+      });
+    });
+  </script>
+</body>
+</html>
